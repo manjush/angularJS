@@ -1,0 +1,43 @@
+﻿<div class="col-md-6 col-md-offset-3">
+    <h2>Register</h2>
+    <form name="form" ng-submit="vm.createUser()" role="form">
+        <div class="form-group" ng-class="{ 'has-error': form.firstName.$dirty && form.firstName.$error.required }">
+            <label for="username">First name</label>
+            <input type="text" name="firstName" id="firstName" class="form-control" ng-model="vm.user.firstName" required />
+            <span ng-show="form.firstName.$dirty && form.firstName.$error.required" class="help-block">First name is required</span>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': form.lastName.$dirty && form.lastName.$error.required }">
+            <label for="username">Last name</label>
+            <input type="text" name="lastName" id="lastName" class="form-control" ng-model="vm.user.lastName" required />
+            <span ng-show="form.lastName.$dirty && form.lastName.$error.required" class="help-block">Last name is required</span>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': form.emailId.$dirty && form.emailId.$error.required }">
+            <label for="emailId">Email Id</label>
+            <input type="email" name="emailId" id="emailId" class="form-control" ng-model="vm.user.emailId" required />
+            <span ng-show="form.emailId.$dirty && form.emailId.$error.required" class="help-block">Email Id is required</span>
+            <span style="color:red;" class="help-block" ng-show="form.emailId.$dirty && form.emailId.$error.email"> Not a valid email!</span>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" class="form-control" ng-model="vm.user.password" required equals="{{vm.user.passwordConfirm}}" ng-minlength="4"/>
+            <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>
+            <span style="color:red;" ng-show="form.password.$dirty && form.password.$error.minlength" class="help-block"> Password Should Contain Atleast 4 Characters</span>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error' : form.passwordConfirm.$dirty  && form.passwordConfirm.$error.required && form.passwordConfirm.$invalid }">
+        <label for="passwordConfirm">Password confirm</label>
+        <input class="form-control"   id="passwordConfirm" ng-model="vm.user.passwordConfirm" name="passwordConfirm" type="password"  equals="{{vm.user.password}}" required>
+        <span  ng-show="form.passwordConfirm.$dirty && form.passwordConfirm.$error.required" class="help-block">Password confirm is required</span>
+        <span style="color:red;" ng-show="form.passwordConfirm.$dirty && form.passwordConfirm.$error.equals" class="help-block">Password No match!</span>
+
+        <div class="form-group" ng-class="{ 'has-error': form.whatsAppNumber.$dirty && form.whatsAppNumber.$error.required }">
+            <label for="whatsAppNumber">WhatsApp Mobile Number</label>
+            <input type="whatsAppNumber" name="whatsAppNumber" id="whatsAppNumber" class="form-control" ng-model="vm.user.whatsAppNumber" required />
+            <span ng-show="form.whatsAppNumber.$dirty && form.whatsAppNumber.$error.required" class="help-block">whats App Number is required</span>
+        </div>
+        <div class="form-actions">
+            <button type="submit" ng-disabled="form.$invalid || vm.dataLoading" class="btn btn-primary">Register</button>
+            <img ng-if="vm.dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            <a href="#!/login" class="btn btn-link">Cancel</a>
+        </div>
+    </form>
+</div>
